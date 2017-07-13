@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb}
+\renewcommand{\baselinestretch}{1.25} 
+\usepackage[margin=1in]{geometry}%
+
+\begin{document}
+\section{The Model  - DRAFT}
+\subsection{Initial model - without retirement}
+The initial model that is taken into consideration is the basic heterogeneous agents model a la Aiyagari. Where the households are ex ante homogeneous but face different idiosyncratic earnings risk from shocks on productivity.
+
+The problem that Households face is as follows:
+\begin{align*}
+&\max_{c_t,a_{t+1}}&&\mathbb{E}_0 \sum_{t=0}^{\infty} \beta^t u(c_t) &\\
+&\text{subject to}&&a_{t+1} + c_t \le y(s'|s)lw +(1-r)a_t & \\
+&&&c_t\ge 0 \\
+&&&a_t \ge -b
+\end{align*}
+
+Where $y(s'|s)$ captures the idiosyncratic earning risk through two states of productivity and follows a finite state Markov chain process, $b$ is the borrowing limit and $\beta$ the utility discount factor.
+
+Thus, the value function for this problem, normalising labor demand $l=1$, reads:
+
+\begin{align*}
+V(a_t)=\max_{a_{t+1}\ge 0} \big[ u((1-r)a_t + y(s'|s)w_t -a_{t+1}) + \sum_{t=0}^{\infty}\beta^t [u((1+r)a_{t+1}+)+ y(s'|s)w_{t+1} -a_{t+2}]\big]
+\end{align*}
+
+From the optimality conditions we know 
+
+\begin{align*}
+U'(c_j(a,s)) = \displaystyle\sum_{j=0}^{\infty} [U'(c_{j+1}(a',s'))\pi(s'| s)]   \beta(1+r) \\
+c_j(a,s)^{-1} = \displaystyle\sum_{j=0}^{\infty} [c_{j+1}(a',s'))\pi(s'| s)]^{-1} \beta(1+r) \\
+a'=(1+r)a+y_j(s)-c_j(a,s) \\
+\end{align*}
+%(1+r)a+y_j(s)-c_j(a,s) = \displaystyle\sum_{j=0}^{\infty} [c_{j+1}(a',s'))\pi(s'| s)] (\beta(1+r))^{-1}\\
+%||a'_{j+1}-a_{j}||<\epsilon
+%\end{align*}
+
+\subsection{Initial model - with retirement}
+
+We denote a households age by $j\in{W,R}$. Young households face a constant probability of retiring of $1-\theta \in[0,1]$ and old households face a constant probability of dying of $1-\nu \in[0,1]$, if the agent/household dies, it is replaced by a new young household.
+
+The dynamic programming problem of retired households is characterized as follows:
+
+\begin{align*}
+&V_R(a)=\max_{c,a'}\{u(c) + \nu\beta V_R(a')\} \\
+\text{s. t.} \\&c+a'= b_R + (1+r)a
+\end{align*}
+
+Where $b_R$ denotes the retirement benefits.
+
+For young hoseholds the programming problem is given by:
+
+\begin{align*}
+&V_W(a)=\max_{c,a'}\{u(c) + \beta\sum_{s\in S} \pi(s'|s)[\theta V_W(a') +(1-\theta)V_R(a')]\} \\
+\text{s. t.} \\&c+a'= (1-\tau) w y(s) + (1+r)a
+\end{align*}
+
+Where \tau is the tax rate applied to labor earnings in order to finance social security benefits for retirees.
+
+
+
+
+\end{document}
